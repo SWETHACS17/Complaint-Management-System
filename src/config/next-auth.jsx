@@ -1,3 +1,4 @@
+"Use client";
 import NextAuth from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
 import User from '@/models/User';
@@ -45,7 +46,7 @@ export const authOptions = {
     },
   },
   pages: {
-    signIn: '/auth/login',
+    signIn: '/login',
   },
 };
 

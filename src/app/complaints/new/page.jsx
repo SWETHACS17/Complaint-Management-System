@@ -7,13 +7,18 @@ export default async function NewComplaintPage() {
   const session = await getServerSession(authOptions);
   
   if (!session) {
-    redirect('/auth/login');
+    redirect('/auth/login?callbackUrl=/complaints/new');
   }
   
   return (
-    <div className="py-6">
-      <h2 className="text-2xl font-bold mb-6">Submit New Complaint</h2>
-      <ComplaintForm />
+    <div className="py-8 px-4 max-w-7xl mx-auto">
+      <div className="mb-8 mt-20 text-center">
+        <h1 className="text-3xl font-bold text-pink-600 mb-2">Submit a New Complaint</h1>
+        <p className="text-gray-600">Fill out the form below to report your issue</p>
+      </div>
+      <div className="bg-white rounded-xl shadow-sm p-6 max-w-4xl mx-auto">
+        <ComplaintForm />
+      </div>
     </div>
   );
 }

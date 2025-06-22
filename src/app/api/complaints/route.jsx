@@ -4,7 +4,33 @@ import connectDB from '@/config/db';
 import { getSession } from '@/lib/utils';
 import { deleteImage } from '@/lib/cloudinary';
 
-// ... (GET method remains the same)
+// GET all complaints for the current user
+export async function GET() {
+  try {
+    await connectDB();
+    const session = await getSession();
+    
+    if (!session) {
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    }
+    
+    const complaints = await Complaint.find({ user: session.user.id })
+      .sort({ createdAt: -1 })
+      .lean();
+    
+    // Convert to plain objects and serialize dates
+    const serializedComplaints = complaints.map(complaint => ({
+      ...complaint,
+      _id: complaint._id.toString(),
+      createdAt: complaint.createdAt.toISOString(),
+      user: complaint.user.toString()
+    }));
+    
+    return NextResponse.json(serializedComplaints);
+  } catch (error) {
+    return NextResponse.json({ error: error.message }, { status: 500 });
+  }
+}
 
 // POST a new complaint
 export async function POST(request) {
@@ -29,12 +55,19 @@ export async function POST(request) {
       photo: photo || '',
       publicId: publicId || '',
       user: session.user.id,
+     
     });
     
     await newComplaint.save();
-    return NextResponse.json(newComplaint, { status: 201 });
+    
+    return NextResponse.json({
+      ...newComplaint.toObject(),
+      _id: newComplaint._id.toString(),
+      createdAt: newComplaint.createdAt.toISOString(),
+      user: newComplaint.user.toString()
+    });
   } catch (error) {
-    return NextResponse.json({ error: error.message }, { status: 500 });
+    return NextResponse.json({ error: error.message });
   }
 }
 

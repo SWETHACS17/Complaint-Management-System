@@ -123,7 +123,7 @@ export default function RegisterPage() {
       </form>
       
       <div className="mt-4 text-center">
-        <p className="text-gray-600">Already have an account? <Link href="/auth/login" className="text-blue-600 hover:underline">Login</Link></p>
+        <p className="text-gray-600">Already have an account? <Link href="/login" className="text-blue-600 hover:underline">Login</Link></p>
       </div>
     </div>
   );
