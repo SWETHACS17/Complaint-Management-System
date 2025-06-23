@@ -1,4 +1,4 @@
-// app/layout.jsx (SERVER COMPONENT)
+
 import './globals.css';
 import { Inter } from 'next/font/google';
 import { getServerSession } from 'next-auth';

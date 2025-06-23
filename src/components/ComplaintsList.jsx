@@ -83,7 +83,7 @@ const ComplaintsList = () => {
             <div className="px-6 py-4">
               <button
                 onClick={() => toggleExpand(complaint._id)}
-                className="w-full flex justify-between items-center text-left focus:outline-none"
+                className="w-full flex justify-between items-center text-left focus:outline-none cursor-pointer" // Added cursor-pointer here
                 aria-expanded={expandedId === complaint._id}
                 aria-controls={`complaint-${complaint._id}`}
               >
@@ -91,7 +91,6 @@ const ComplaintsList = () => {
                   <h3 className="text-lg font-medium text-gray-900">
                     {complaint.title}
                   </h3>
-                  
                 </div>
                 <div className="flex items-center">
                   <span className="text-sm text-gray-500 mr-3">
@@ -100,6 +99,7 @@ const ComplaintsList = () => {
                   <motion.div
                     animate={{ rotate: expandedId === complaint._id ? 180 : 0 }}
                     transition={{ duration: 0.2 }}
+                    className="cursor-pointer" // Added cursor-pointer here
                   >
                     <svg
                       className="h-5 w-5 text-pink-600"
@@ -128,7 +128,9 @@ const ComplaintsList = () => {
                     className="overflow-hidden"
                   >
                     <div className="mt-4 pl-1">
-                      <p className="text-gray-600 mb-4">{complaint.description}</p>
+                      <div className="border border-pink-200 bg-pink-50 text-black p-4 rounded-lg transition-all duration-300 hover:bg-pink-700 hover:text-white cursor-pointer"> {/* Added cursor-pointer here */}
+                        <p className="mb-4">{complaint.description}</p>
+                      </div>
                       
                       {complaint.photo && (
                         <motion.div
@@ -149,7 +151,6 @@ const ComplaintsList = () => {
                       )}
                       
                       <div className="mt-4 pt-4 border-t border-gray-200 flex justify-between">
-                      
                         <button
                           onClick={async () => {
                             if (confirm('Are you sure you want to delete this complaint?')) {
@@ -170,7 +171,7 @@ const ComplaintsList = () => {
                               }
                             }
                           }}
-                          className="text-sm text-red-600 hover:text-red-800 font-medium"
+                          className="text-sm text-red-600 hover:text-red-800 font-medium cursor-pointer" // Added cursor-pointer here
                         >
                           Delete this Complaint
                         </button>

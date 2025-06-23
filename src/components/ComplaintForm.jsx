@@ -35,7 +35,7 @@ const ComplaintForm = ({ complaint = null }) => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ title, description, photo, publicId, status }),
+        body: JSON.stringify({ title, description, photo, publicId }),
       });
       
       if (!response.ok) {
@@ -165,9 +165,7 @@ const ComplaintForm = ({ complaint = null }) => {
       </div>
       
       <div className="mb-6">
-        <label htmlFor="photo" className="block text-sm font-medium text-gray-700 mb-1">
-          Photo (Optional)
-        </label>
+        
         <div className="flex items-center gap-4">
           <label className="cursor-pointer">
             <span className="px-4 py-2 bg-pink-600 text-white rounded-md hover:bg-pink-700 transition-colors">
@@ -180,6 +178,9 @@ const ComplaintForm = ({ complaint = null }) => {
               onChange={handleFileUpload}
               className="hidden"
             />
+           <label htmlFor="photo" className="block text-sm font-medium text-gray-700 mb-1 mt-3 px-1">
+              Photo (Optional)
+           </label>
           </label>
           {previewImage && (
             <button

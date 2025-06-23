@@ -2,12 +2,13 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { signOut } from 'next-auth/react';
+import { signOut, useSession } from 'next-auth/react';
 import { useEffect, useState } from 'react';
 
-const Navbar = ({ session }) => {
+const Navbar = () => {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
+  const { data: session, status } = useSession();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -29,7 +30,7 @@ const Navbar = ({ session }) => {
           </Link>
           
           <div className="flex space-x-8">
-            {session ? (
+            {status === 'authenticated' ? (
               <> 
                 <button 
                   onClick={() => signOut({ callbackUrl: '/' })}
@@ -39,7 +40,7 @@ const Navbar = ({ session }) => {
                   <span className={`absolute -bottom-1 left-0 w-0 h-0.5 group-hover:w-full transition-all duration-300 ${scrolled ? 'bg-coral-500' : 'bg-white'}`}></span>
                 </button>
               </>
-            ) : (
+            ) : status === 'unauthenticated' ? (
               <>
                 <Link 
                   href="/login" 
@@ -56,7 +57,7 @@ const Navbar = ({ session }) => {
                   <span className={`absolute -bottom-1 left-0 w-0 h-0.5 ${pathname === '/register' ? 'w-full' : ''} group-hover:w-full transition-all duration-300 ${scrolled ? 'bg-coral-500' : 'bg-white'}`}></span>
                 </Link>
               </>
-            )}
+            ) : null}
           </div>
         </div>
       </div>

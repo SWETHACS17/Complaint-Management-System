@@ -53,61 +53,62 @@ export default function RegisterPage() {
   };
 
   return (
-    <div className="max-w-md mx-auto mt-10 p-6 bg-white rounded-lg shadow-md">
-      <h1 className="text-2xl font-bold mb-6 text-center">Register</h1>
+    <div className='pt-30'>
+    <div className="max-w-md mx-auto mt-10 p-6 bg-white rounded-lg shadow-md ">
+      <h1 className="text-pink-600 text-2xl font-bold mb-6 text-center">Register</h1>
       
       {error && <div className="mb-4 p-2 bg-red-100 text-red-700 rounded">{error}</div>}
       
-      <form onSubmit={handleSubmit} className="space-y-4">
+      <form onSubmit={handleSubmit} className="space-y-4 ">
         <div>
-          <label htmlFor="name" className="block text-gray-700 font-medium mb-2">Name</label>
+          <label htmlFor="name" className="text-pink-600 block font-medium mb-2">Name</label>
           <input
             type="text"
             id="name"
             name="name"
             value={formData.name}
             onChange={handleChange}
-            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="text-black w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-pink-500"
             required
           />
         </div>
         
         <div>
-          <label htmlFor="email" className="block text-gray-700 font-medium mb-2">Email</label>
+          <label htmlFor="email" className="block text-pink-600 font-medium mb-2">Email</label>
           <input
             type="email"
             id="email"
             name="email"
             value={formData.email}
             onChange={handleChange}
-            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="text-black w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-pink-500"
             required
           />
         </div>
         
         <div>
-          <label htmlFor="password" className="block text-gray-700 font-medium mb-2">Password</label>
+          <label htmlFor="password" className="block text-pink-600 font-medium mb-2">Password</label>
           <input
             type="password"
             id="password"
             name="password"
             value={formData.password}
             onChange={handleChange}
-            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="text-black w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-pink-500"
             required
             minLength="6"
           />
         </div>
         
         <div>
-          <label htmlFor="confirmPassword" className="block text-gray-700 font-medium mb-2">Confirm Password</label>
+          <label htmlFor="confirmPassword" className="block text-pink-600 font-medium mb-2">Confirm Password</label>
           <input
             type="password"
             id="confirmPassword"
             name="confirmPassword"
             value={formData.confirmPassword}
             onChange={handleChange}
-            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="text-black w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-pink-500"
             required
             minLength="6"
           />
@@ -116,15 +117,16 @@ export default function RegisterPage() {
         <button
           type="submit"
           disabled={isLoading}
-          className="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50"
+          className="w-full bg-pink-600 text-white py-2 px-4 rounded-md hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-offset-2 disabled:opacity-50"
         >
           {isLoading ? 'Registering...' : 'Register'}
         </button>
       </form>
       
       <div className="mt-4 text-center">
-        <p className="text-gray-600">Already have an account? <Link href="/login" className="text-blue-600 hover:underline">Login</Link></p>
+        <p className="text-gray-600">Already have an account? <Link href="/login" className="text-pink-600 hover:underline">Login</Link></p>
       </div>
+    </div>
     </div>
   );
 }
