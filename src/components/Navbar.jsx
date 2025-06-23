@@ -34,27 +34,27 @@ const Navbar = () => {
               <> 
                 <button 
                   onClick={() => signOut({ callbackUrl: '/' })}
-                  className={`relative group text-lg font-medium ${scrolled ? 'text-white' : 'text-white'}`}
+                  className={`mr-12 relative group text-lg font-medium ${scrolled ? 'text-white' : 'text-white'}`}
                 >
                   Logout
-                  <span className={`absolute -bottom-1 left-0 w-0 h-0.5 group-hover:w-full transition-all duration-300 ${scrolled ? 'bg-coral-500' : 'bg-white'}`}></span>
+                  <span className={`mr-12 absolute -bottom-1 left-0 w-0 h-0.5 group-hover:w-full transition-all duration-300 ${scrolled ? 'bg-coral-500' : 'bg-white'}`}></span>
                 </button>
               </>
             ) : status === 'unauthenticated' ? (
               <>
                 <Link 
                   href="/login" 
-                  className={`relative group text-lg font-medium ${scrolled ? 'text-gray-700' : 'text-white'}`}
+                  className={`mr-12 relative group text-lg font-medium ${scrolled ? 'text-gray-700' : 'text-white'}`}
                 >
                   Login
-                  <span className={`absolute -bottom-1 left-0 w-0 h-0.5 ${pathname === '/login' ? 'w-full' : ''} group-hover:w-full transition-all duration-300 ${scrolled ? 'bg-coral-500' : 'bg-white'}`}></span>
+                  <span className={`mr-12 absolute -bottom-1 left-0 w-0 h-0.5 ${pathname === '/login' ? 'w-full' : ''} group-hover:w-full transition-all duration-300 ${scrolled ? 'bg-coral-500' : 'bg-white'}`}></span>
                 </Link>
                 <Link 
                   href="/register" 
-                  className={`relative group text-lg font-medium ${scrolled ? 'text-gray-700' : 'text-white'}`}
+                  className={`mr-12 relative group text-lg font-medium ${scrolled ? 'text-gray-700' : 'text-white'}`}
                 >
                   Register
-                  <span className={`absolute -bottom-1 left-0 w-0 h-0.5 ${pathname === '/register' ? 'w-full' : ''} group-hover:w-full transition-all duration-300 ${scrolled ? 'bg-coral-500' : 'bg-white'}`}></span>
+                  <span className={`mr-12 absolute -bottom-1 left-0 w-0 h-0.5 ${pathname === '/register' ? 'w-full' : ''} group-hover:w-full transition-all duration-300 ${scrolled ? 'bg-coral-500' : 'bg-white'}`}></span>
                 </Link>
               </>
             ) : null}
