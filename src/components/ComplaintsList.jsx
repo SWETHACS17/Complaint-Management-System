@@ -80,29 +80,28 @@ const ComplaintsList = () => {
             transition={{ duration: 0.3 }}
             className="hover:bg-gray-50 transition-colors"
           >
-            <div className="px-6 py-4">
+            <div className="px-4 sm:px-6 py-4">
               <button
                 onClick={() => toggleExpand(complaint._id)}
-                className="w-full flex justify-between items-center text-left focus:outline-none cursor-pointer" // Added cursor-pointer here
+                className="w-full flex justify-between items-center text-left focus:outline-none"
                 aria-expanded={expandedId === complaint._id}
                 aria-controls={`complaint-${complaint._id}`}
               >
                 <div className="flex items-center">
-                  <h3 className="text-lg font-medium text-gray-900">
+                  <h3 className="text-base sm:text-lg font-medium text-gray-900">
                     {complaint.title}
                   </h3>
                 </div>
                 <div className="flex items-center">
-                  <span className="text-sm text-gray-500 mr-3">
+                  <span className="text-xs sm:text-sm text-gray-500 mr-2 sm:mr-3">
                     {new Date(complaint.createdAt).toLocaleDateString()}
                   </span>
                   <motion.div
                     animate={{ rotate: expandedId === complaint._id ? 180 : 0 }}
                     transition={{ duration: 0.2 }}
-                    className="cursor-pointer" // Added cursor-pointer here
                   >
                     <svg
-                      className="h-5 w-5 text-pink-600"
+                      className="h-4 w-4 sm:h-5 sm:w-5 text-pink-600"
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 20 20"
                       fill="currentColor"
@@ -128,8 +127,8 @@ const ComplaintsList = () => {
                     className="overflow-hidden"
                   >
                     <div className="mt-4 pl-1">
-                      <div className="border border-pink-200 bg-pink-50 text-black p-4 rounded-lg transition-all duration-300 hover:bg-pink-700 hover:text-white cursor-pointer"> {/* Added cursor-pointer here */}
-                        <p className="mb-4">{complaint.description}</p>
+                      <div className="border border-pink-200 bg-pink-50 text-black p-3 sm:p-4 rounded-lg transition-all duration-300 hover:bg-pink-700 hover:text-white">
+                        <p className="mb-3 sm:mb-4 text-sm sm:text-base">{complaint.description}</p>
                       </div>
                       
                       {complaint.photo && (
@@ -144,7 +143,7 @@ const ComplaintsList = () => {
                             alt="Complaint photo"
                             width={600}
                             height={400}
-                            className="rounded-lg border border-gray-200 object-cover max-h-64 w-auto"
+                            className="rounded-lg border border-gray-200 object-cover max-h-48 sm:max-h-64 w-auto"
                             priority={false}
                           />
                         </motion.div>
@@ -171,7 +170,7 @@ const ComplaintsList = () => {
                               }
                             }
                           }}
-                          className="text-sm text-red-600 hover:text-red-800 font-medium cursor-pointer" // Added cursor-pointer here
+                          className="text-xs sm:text-sm text-red-600 hover:text-red-800 font-medium"
                         >
                           Delete this Complaint
                         </button>

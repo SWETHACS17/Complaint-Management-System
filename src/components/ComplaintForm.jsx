@@ -89,6 +89,15 @@ const ComplaintForm = ({ complaint = null }) => {
       });
       
       const data = await response.json();
+      // 🔍 Add this log to debug the upload result
+console.log("🖼️ Cloudinary Upload Response:", data);
+
+if (data.url) {
+  setPhoto(data.url);
+  setPublicId(data.publicId);
+  setError('');
+}
+
       if (data.url) {
         setPhoto(data.url);
         setPublicId(data.publicId);

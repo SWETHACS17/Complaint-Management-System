@@ -35,12 +35,12 @@ export default async function ComplaintDetailPage({ params }) {
   return (
     <div className="min-h-screen bg-gray-50 py-8 px-4 sm:px-6 lg:px-8">
       <div className="max-w-4xl mx-auto">
-        <div className="text-center mb-10">
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">Complaint Details</h1>
-          <p className="text-gray-600">View the details of your submitted complaint</p>
+        <div className="text-center mb-6 md:mb-10">
+          <h1 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2">Complaint Details</h1>
+          <p className="text-sm md:text-base text-gray-600">View the details of your submitted complaint</p>
         </div>
         
-        <div className="bg-white rounded-xl shadow-sm overflow-hidden border border-gray-200">
+        <div className="bg-white rounded-lg md:rounded-xl shadow-sm overflow-hidden border border-gray-200">
           <ComplaintDetail complaint={complaintData} />
         </div>
       </div>
